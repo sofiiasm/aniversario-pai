@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Aniversário, Pai!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #fff5f5;
+      color: #c0392b;
+      padding: 5vw;
+    }
+
+    h1 {
+      color: #b22222;
+      font-size: 7vw;
+    }
+
+    h2 {
+      color: #a52a2a;
+      margin-top: 8vw;
+      font-size: 5vw;
+    }
+
+    button {
+      padding: 3vw 6vw;
+      font-size: 4vw;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 2vw;
+    }
+
+    button:hover {
+      background-color: #e74c3c;
+    }
+
+    .mensagem {
+      display: none;
+      background-color: #ffeaea;
+      padding: 5vw;
+      border-radius: 15px;
+      margin: 5vw auto;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+    }
+
+    .carrossel {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 5vw auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 20px;
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 4vw;
+      margin-top: 2vw;
+      flex-wrap: wrap;
+    }
+
+    form {
+      background-color: #ffeaea;
+      padding: 5vw;
+      margin: 5vw auto;
+      border-radius: 15px;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(192, 57, 43, 0.1);
+      width: 100%;
+    }
+
+    input[type="text"] {
+      padding: 3vw;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 4vw;
+      font-size: 4vw;
+    }
+
+    label {
+      display: block;
+      margin: 2vw 0;
+      font-size: 4vw;
+    }
+
+    #resultado {
+      margin-top: 5vw;
+      font-weight: bold;
+      color: #8b0000;
+      font-size: 4vw;
+    }
+
+    .confete {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Aniversário, Pai!</h1>
+  <p>Esse site é um presente feito com todo meu amor para você!</p>
+
+  <button onclick="mostrarMensagem()">Clique para ver sua mensagem</button>
+  <div class="confete" id="confete-container"></div>
+
+  <div class="mensagem" id="mensagem">
+    <p>Pai, nesse seu dia tão especial, eu quero te lembrar o quanto você é importante. Obrigada por ser meu exemplo, minha segurança e meu melhor amigo. Te amo demais!</p>
+  </div>
+
+  <h2>Nossas Memórias</h2>
+  <div class="carrossel">
+    <div class="slides" id="slides">
+      <img src="ensaio2.jpg" alt="Foto 1">
+      <img src="cachoeira.jpg" alt="Foto 2">
+      <img src="dança.jpg" alt="Foto 3">
+      <img src="perfil.jpg" alt="Foto 4">
+      <img src="forms.jpg" alt="Foto 5">
+      <img src="entrada.jpg" alt="Foto 6">
+      <img src="certficado.jpg" alt="Foto 7">  
+      <img src="ensaio.jpg" alt="Foto 8">
+      <img src="praia.jpg" alt="Foto 9">
+      <img src="familia.jpg" alt="Foto 10">
+    </div>
+  </div>
+
+  <div class="botoes">
+    <button onclick="voltar()">← Anterior</button>
+    <button onclick="avancar()">Próxima →</button>
+  </div>
+
+  <h2>Certificado de Melhor Pai do Mundo</h2>
+  <p><strong>Confere-se a <u>Kleber</u> o título de MELHOR PAI DO MUNDO</strong><br>Por ser exemplo de amor, força, carinho e parceria.<br>Com amor, sua filha.</p>
+
+  <h2>Quiz: O quanto o Kleber sabe?</h2>
+  <form onsubmit="mostrarResultado(event)">
+    <p>1. Qual é o melhor time do mundo?</p>
+    <input type="text" name="q1"><br>
+
+    <p>2. Em que ano o Inter foi campeão da Libertadores pela primeira vez?</p>
+    <input type="text" name="q2"><br>
+
+    <p>3. Quantas estrelas tem o escudo do Inter?</p>
+    <label><input type="radio" name="q3" value="errado"> 3</label>
+    <label><input type="radio" name="q3" value="certo"> 4</label>
+    <label><input type="radio" name="q3" value="errado"> 5</label><br>
+
+    <p>4. Qual é a filha mais legal do universo?</p>
+    <label><input type="radio" name="q4" value="errado"> A do vizinho</label>
+    <label><input type="radio" name="q4" value="errado"> Não sei</label>
+    <label><input type="radio" name="q4" value="certo"> A que fez esse site</label><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById("mensagem").style.display = "block";
+      jogarConfetes();
+    }
+
+    function criarConfete() {
+      const confete = document.createElement("div");
+      confete.style.position = "fixed";
+      confete.style.width = "10px";
+      confete.style.height = "10px";
+      confete.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      confete.style.top = "-10px";
+      confete.style.left = `${Math.random() * window.innerWidth}px`;
+      confete.style.opacity = 1;
+      confete.style.borderRadius = "50%";
+      confete.style.animation = `fall ${2 + Math.random() * 3}s linear forwards`;
+      document.getElementById("confete-container").appendChild(confete);
+      setTimeout(() => confete.remove(), 5000);
+    }
+
+    function jogarConfetes() {
+      for (let i = 0; i < 100; i++) {
+        setTimeout(criarConfete, i * 30);
+      }
+    }
+
+    function mostrarResultado(event) {
+      event.preventDefault();
+      const resposta2 = event.target.q2.value.trim();
+      const acertos = [];
+
+      if (resposta2 === "2006") acertos.push("Questão 2");
+      if (event.target.q3.value === "certo") acertos.push("Questão 3");
+      if (event.target.q4.value === "certo") acertos.push("Questão 4");
+
+      document.getElementById("resultado").innerHTML = `
+        <h3>Resultado:</h3>
+        <p>Você acertou: ${acertos.length} de 3 questões corrigidas automaticamente.</p>
+        <p>(Questão 1 será avaliada pela filha!)</p>
+      `;
+    }
+
+    let index = 0;
+    const slides = document.getElementById("slides");
+    const total = slides.children.length;
+
+    function atualizarSlide() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function avancar() {
+      index = (index + 1) % total;
+      atualizarSlide();
+    }
+
+    function voltar() {
+      index = (index - 1 + total) % total;
+      atualizarSlide();
+    }
+  </script>
+</body>
+</html>
