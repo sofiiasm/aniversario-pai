@@ -143,6 +143,23 @@
   </div>
 
   <h2>Nossas Memórias</h2>
+  <style>
+    .carousel-container {
+      width: 100%;
+      max-width: 10px;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+  
+    .carousel-images img {
+      width: 100%;
+      height: 10px; /* altura menor */
+      object-fit: cover; /* mantém proporção cortando excessos */
+      border-radius: 200px;
+    }
+  </style>
   <div class="carrossel">
     <div class="slides" id="slides">
       <img src="ensaio2.jpg" alt="Foto 1">
@@ -228,7 +245,6 @@
       document.getElementById("resultado").innerHTML = `
         <h3>Resultado:</h3>
         <p>Você acertou: ${acertos.length} de 3 questões corrigidas automaticamente.</p>
-        <p>(Questão 1 será avaliada pela filha!)</p>
       `;
     }
 
