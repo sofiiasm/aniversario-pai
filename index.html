@@ -234,20 +234,29 @@
     }
 
     function mostrarResultado(event) {
-      event.preventDefault();
-      const resposta2 = event.target.q2.value.trim();
-      const acertos = [];
+  event.preventDefault();
+  const resposta2 = event.target.q2.value.trim();
+  const acertos = [];
 
-      if (resposta2 === "2006") acertos.push("Questão 2");
-      if (event.target.q3.value === "certo") acertos.push("Questão 3");
-      if (event.target.q4.value === "certo") acertos.push("Questão 4");
+  if (resposta2 === "2006") acertos.push("Questão 2");
+  if (event.target.q3.value === "certo") acertos.push("Questão 3");
+  if (event.target.q4.value === "certo") acertos.push("Questão 4");
 
-      document.getElementById("resultado").innerHTML = `
-        <h3>Resultado:</h3>
-        <p>Você acertou: ${acertos.length} de 3 questões corrigidas automaticamente.</p>
-      `;
-    }
+  const resultado = document.getElementById("resultado");
 
+  if (acertos.length === 3) {
+    resultado.innerHTML = `
+      <h3>Parabéns!</h3>
+      <p>Você acertou todas! Você é um verdadeiro campeão, Kleber!</p>
+    `;
+    jogarConfetes();
+  } else {
+    resultado.innerHTML = `
+      <h3>Resultado:</h3>
+      <p>Você acertou: ${acertos.length} de 3 questões corrigidas automaticamente.</p>
+    `;
+  }
+}
     let index = 0;
     const slides = document.getElementById("slides");
     const total = slides.children.length;
